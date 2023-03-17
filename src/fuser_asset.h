@@ -689,9 +689,11 @@ struct SongTransition {
 			ctx.serializeText("Title", ctx.songName);
 
 			i32 bpm = ctx.bpm;
-			while (bpm > 157) bpm = std::ceil(bpm /= 2); //half-time anything faster, recursively
-			if (bpm < 90) bpm = ctx.bpm; //prevent 158-179 bpm from clamping to 90
-			bpm = std::clamp(bpm, 90, 157);
+			/* Disable BPM clamping (curious on what the game will do)
+				while (bpm > 157) bpm = std::ceil(bpm /= 2); //half-time anything faster, recursively
+				if (bpm < 90) bpm = ctx.bpm; //prevent 158-179 bpm from clamping to 90
+				bpm = std::clamp(bpm, 90, 157);
+			*/
 			ctx.serializePrimitive("BPM", bpm);
 
 			if (!allUnpitched) {
@@ -892,9 +894,11 @@ struct CelData {
 			ctx.serializeText("Title", ctx.songName);
 
 			i32 bpm = ctx.bpm;
-			while (bpm > 157) bpm = std::ceil(bpm /= 2); //half-time anything faster, recursively
-			if (bpm < 90) bpm = ctx.bpm; //prevent 158-179 bpm from clamping to 90
-			bpm = std::clamp(bpm, 90, 157);
+			/*
+				while (bpm > 157) bpm = std::ceil(bpm /= 2); //half-time anything faster, recursively
+				if (bpm < 90) bpm = ctx.bpm; //prevent 158-179 bpm from clamping to 90
+				bpm = std::clamp(bpm, 90, 157);
+			*/
 			ctx.serializePrimitive("BPM", bpm);
 
 			
